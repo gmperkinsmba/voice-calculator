@@ -4,17 +4,7 @@
 
 Voice Calc Studio is a macOS menu bar calculator. Hold a modifier key to speak a calculation, then review the expression and copied answer in a floating panel. The browser app remains available for typed entry and editable transcripts or expressions. Browser speech uses the browser's provider and may send audio online. Native speech requires on-device English recognition and never falls back to a network service.
 
-## Run
-
-Python 3.10 or later is required.
-
-```sh
-python3 server.py
-```
-
-Open <http://127.0.0.1:8341>. The server binds to loopback only. Stop it with Ctrl+C.
-
-## Native macOS mode
+## Install and run on macOS
 
 The separate native app lives under `native/`. It does not replace or modify the browser app. It requires macOS 13 or later.
 
@@ -25,11 +15,27 @@ native/install.sh
 
 The app appears in the menu bar as **Voice Calc Studio**. Hold Right Command to capture. Settings also offers Right Option and Left Option. The shortcut applies to the exact physical key, so holding another modifier does not keep capture active after release.
 
-Use **Request access** in Settings to grant Microphone, Speech Recognition, and Accessibility access before capture. macOS may also request speech and microphone access on first use. The app shows current permission state in Settings. Recognition runs on-device in English only; if macOS does not offer on-device recognition, capture stops without sending audio elsewhere. Audio capture ends when you release the key or after 30 seconds. The app keeps the recognized expression and answer in a small floating panel, copies only a finite answer, and provides a Close control.
+Before capture, choose **Request access** in Settings. Allow these permissions:
+
+- Microphone
+- Speech Recognition
+- Accessibility
+
+On first use, macOS may ask for microphone and speech access. Settings shows each permission. Recognition runs in English on your Mac. If your Mac cannot recognize speech on-device, capture stops. Audio is not sent elsewhere. Capture ends when you release the key or after 30 seconds. The app shows the recognized expression and answer in a small floating panel. It copies only a finite answer and has a Close control.
 
 Build output is written to `native/dist/`. The installer targets `~/Applications/Voice Calc Studio.app`. It refuses an existing destination unless you pass `--replace-voice-calc-studio`, and then replaces only an app with this native bundle identifier. It never targets the browser app.
 
 The build is ad-hoc signed for local use and is not notarized or Developer ID signed. macOS may require local security approval, and privacy permissions can need renewal after rebuilding.
+
+## Browser mode (optional)
+
+Python 3.10 or later is required.
+
+```sh
+python3 server.py
+```
+
+Open <http://127.0.0.1:8341>. The server binds to loopback only. Stop it with Ctrl+C.
 
 ## Use
 
