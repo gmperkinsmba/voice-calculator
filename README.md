@@ -7,6 +7,7 @@ Voice Calculator is a macOS menu bar calculator. Hold a modifier key to speak a 
 ## Install and run on macOS
 
 The separate native app lives under `native/`. It does not replace or modify the browser app. It requires macOS 13 or later.
+The install script also needs `python3` on your PATH to check the signed app bundle.
 
 ```sh
 native/build.sh
