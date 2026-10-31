@@ -1,8 +1,8 @@
-# Voice Calc
+# Voice Calculator
 
 **First principle:** Show the math the person meant. Show the answer before they copy it.
 
-Voice Calc Studio is a macOS menu bar calculator. Hold a modifier key to speak a calculation, then review the expression and copied answer in a floating panel. The browser app remains available for typed entry and editable transcripts or expressions. Browser speech uses the browser's provider and may send audio online. Native speech requires on-device English recognition and never falls back to a network service.
+Voice Calculator is a macOS menu bar calculator. Hold a modifier key to speak a calculation, then review the expression and copied answer in a floating panel. The browser app remains available for typed entry and editable transcripts or expressions. Browser speech uses the browser's provider and may send audio online. Native speech requires on-device English recognition and never falls back to a network service.
 
 ## Install and run on macOS
 
@@ -13,7 +13,7 @@ native/build.sh
 native/install.sh
 ```
 
-The app appears in the menu bar as **Voice Calc Studio**. Hold Right Command to capture. Settings also offers Right Option and Left Option. The shortcut applies to the exact physical key, so holding another modifier does not keep capture active after release.
+The app appears in the menu bar as **Voice Calculator**. Hold Right Command to capture. Settings also offers Right Option and Left Option. The shortcut applies to the exact physical key, so holding another modifier does not keep capture active after release.
 
 Before capture, choose **Request access** in Settings. Allow these permissions:
 
@@ -23,7 +23,7 @@ Before capture, choose **Request access** in Settings. Allow these permissions:
 
 On first use, macOS may ask for microphone and speech access. Settings shows each permission. Recognition runs in English on your Mac. If your Mac cannot recognize speech on-device, capture stops. Audio is not sent elsewhere. Capture ends when you release the key or after 30 seconds. The app shows the recognized expression and answer in a small floating panel. It copies only a finite answer and has a Close control.
 
-Build output is written to `native/dist/`. The installer targets `~/Applications/Voice Calc Studio.app`. It refuses an existing destination unless you pass `--replace-voice-calc-studio`, and then replaces only an app with this native bundle identifier. It never targets the browser app.
+Build output is written to `native/dist/Voice Calculator.app`. The installer targets `~/Applications/Voice Calculator.app`. It refuses an existing destination unless you pass `--replace-voice-calculator`, and then replaces only an app with this native bundle identifier. It never targets the browser app.
 
 The build is ad-hoc signed for local use and is not notarized or Developer ID signed. macOS may require local security approval, and privacy permissions can need renewal after rebuilding.
 
@@ -56,7 +56,7 @@ swiftc -parse-as-library native/Sources/MathParser.swift native/Sources/VoiceCal
 /tmp/voice-calc-native-tests
 ```
 
-After building, `native/dist/Voice Calc Studio.app/Contents/MacOS/VoiceCalcStudio --self-test` checks calculation, menu targets, Settings access controls, and status-copy behavior. It does not enter the app launch lifecycle, install the global listener, request permissions, or start a microphone session.
+After building, `native/dist/Voice Calculator.app/Contents/MacOS/VoiceCalcStudio --self-test` checks calculation, menu targets, Settings access controls, and status-copy behavior. It does not enter the app launch lifecycle, install the global listener, request permissions, or start a microphone session.
 
 ## Data
 
@@ -66,7 +66,7 @@ Browser expressions and results stay in local browser storage. The app has no ac
 
 The native target reuses this repository's MIT-licensed `MathParser.swift` and includes a small hold-key and capture coordinator. It does not bundle a remote speech client or agent configuration.
 
-Quit Voice Calc Studio from its menu, then move `~/Applications/Voice Calc Studio.app` to Trash. The browser app at `~/Applications/VoiceCalc.app` is separate.
+Quit Voice Calculator from its menu, then move `~/Applications/Voice Calculator.app` to Trash. The browser app at `~/Applications/VoiceCalc.app` is separate.
 
 To reset only native app permission decisions:
 

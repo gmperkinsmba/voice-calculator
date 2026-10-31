@@ -3,7 +3,7 @@ set -eu
 
 ROOT=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
 NATIVE="$ROOT/native"
-APP="$NATIVE/dist/Voice Calc Studio.app"
+APP="$NATIVE/dist/Voice Calculator.app"
 BUILD_ROOT="$NATIVE/.build"
 
 if [ -e "$APP" ] && [ "${1-}" != "--replace-build" ]; then
@@ -23,15 +23,16 @@ cat > "$BUILD_ROOT/Info.plist" <<'PLIST'
   <key>CFBundleDevelopmentRegion</key><string>en</string>
   <key>CFBundleExecutable</key><string>VoiceCalcStudio</string>
   <key>CFBundleIdentifier</key><string>com.gmperkinsmba.voicecalcstudio.native</string>
+  <key>CFBundleDisplayName</key><string>Voice Calculator</string>
   <key>CFBundleInfoDictionaryVersion</key><string>6.0</string>
-  <key>CFBundleName</key><string>Voice Calc Studio</string>
+  <key>CFBundleName</key><string>Voice Calculator</string>
   <key>CFBundlePackageType</key><string>APPL</string>
   <key>CFBundleShortVersionString</key><string>1.0</string>
   <key>CFBundleVersion</key><string>1</string>
   <key>LSMinimumSystemVersion</key><string>13.0</string>
   <key>LSUIElement</key><true/>
-  <key>NSMicrophoneUsageDescription</key><string>Voice Calc Studio listens while you hold the selected shortcut.</string>
-  <key>NSSpeechRecognitionUsageDescription</key><string>Voice Calc Studio converts your spoken calculation into text on this Mac.</string>
+  <key>NSMicrophoneUsageDescription</key><string>Voice Calculator listens while you hold the selected shortcut.</string>
+  <key>NSSpeechRecognitionUsageDescription</key><string>Voice Calculator converts your spoken calculation into text on this Mac.</string>
 </dict>
 </plist>
 PLIST

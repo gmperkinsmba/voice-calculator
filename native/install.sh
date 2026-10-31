@@ -2,8 +2,8 @@
 set -eu
 
 NATIVE=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
-SOURCE="$NATIVE/dist/Voice Calc Studio.app"
-DEST="$HOME/Applications/Voice Calc Studio.app"
+SOURCE="$NATIVE/dist/Voice Calculator.app"
+DEST="$HOME/Applications/Voice Calculator.app"
 BUNDLE_ID="com.gmperkinsmba.voicecalcstudio.native"
 
 if [ ! -x "$SOURCE/Contents/MacOS/VoiceCalcStudio" ]; then
@@ -20,8 +20,8 @@ codesign --verify --deep --strict "$SOURCE"
 mkdir -p "$HOME/Applications"
 BACKUP=""
 if [ -e "$DEST" ]; then
-  if [ "${1-}" != "--replace-voice-calc-studio" ]; then
-    echo "Install destination exists. Review it, then pass --replace-voice-calc-studio to update." >&2
+  if [ "${1-}" != "--replace-voice-calculator" ]; then
+    echo "Install destination exists. Review it, then pass --replace-voice-calculator to update." >&2
     exit 2
   fi
   DEST_ID=$(/usr/libexec/PlistBuddy -c 'Print :CFBundleIdentifier' "$DEST/Contents/Info.plist" 2>/dev/null || true)
@@ -29,7 +29,7 @@ if [ -e "$DEST" ]; then
     echo "Refusing to replace an app with bundle identifier '$DEST_ID'." >&2
     exit 2
   fi
-  BACKUP="$HOME/Applications/Voice Calc Studio.app.backup.$(date +%Y%m%d%H%M%S)"
+  BACKUP="$HOME/Applications/Voice Calculator.app.backup.$(date +%Y%m%d%H%M%S)"
   mv "$DEST" "$BACKUP"
 fi
 

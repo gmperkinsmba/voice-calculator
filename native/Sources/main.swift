@@ -149,7 +149,7 @@ final class ResultOverlay: NSWindowController {
     required init?(coder: NSCoder) { nil }
 
     func showStatus(_ text: String) {
-        answer.stringValue = "Voice Calc Studio"
+        answer.stringValue = "Voice Calculator"
         answer.font = .systemFont(ofSize: 18, weight: .semibold)
         expression.stringValue = text
         copyButton.isEnabled = false
@@ -205,7 +205,7 @@ final class SettingsWindow: NSWindowController {
 
     init(binding: TriggerBinding) {
         let root = NSView(frame: NSRect(x: 0, y: 0, width: 460, height: 330))
-        let title = NSTextField(labelWithString: "Voice Calc Studio Settings")
+        let title = NSTextField(labelWithString: "Voice Calculator Settings")
         title.font = .systemFont(ofSize: 22, weight: .semibold)
         title.frame = NSRect(x: 24, y: 280, width: 410, height: 30)
         root.addSubview(title)
@@ -340,14 +340,14 @@ final class VoiceCalcApp: NSObject, NSApplicationDelegate {
     private func buildMenu() {
         statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
         statusItem.button?.title = "∑"
-        statusItem.button?.toolTip = "Voice Calc Studio"
+        statusItem.button?.toolTip = "Voice Calculator"
         let menu = NSMenu()
         menu.addItem(NSMenuItem(title: "Hold \(binding.label) to speak", action: nil, keyEquivalent: ""))
         menu.addItem(.separator())
         let settingsItem = NSMenuItem(title: "Settings…", action: #selector(openSettings), keyEquivalent: ",")
         settingsItem.target = self
         menu.addItem(settingsItem)
-        let quit = NSMenuItem(title: "Quit Voice Calc Studio", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q")
+        let quit = NSMenuItem(title: "Quit Voice Calculator", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q")
         quit.target = NSApp
         menu.addItem(quit)
         statusItem.menu = menu
@@ -464,7 +464,7 @@ enum VoiceCalcNativeMain {
                 app.setActivationPolicy(.accessory)
                 let delegate = VoiceCalcApp()
                 guard delegate.runSmokeChecks() else { Foundation.exit(1) }
-                print("Voice Calc Studio self-test passed; menu, settings, and status checks ran without a listener or microphone.")
+                print("Voice Calculator self-test passed; menu, settings, and status checks ran without a listener or microphone.")
                 return
             } catch {
                 fputs("Native self-test failed: \(error)\n", stderr)
